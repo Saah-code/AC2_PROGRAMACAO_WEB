@@ -10,14 +10,15 @@ import { RouterLink } from '@angular/router';
   templateUrl: './cadastrar-pedido.html',
 })
 export class CadastrarPedido {
-constructor(private pedidosService: PedidosService){}
-
   nomePedido: string = '';
 
-  cadastrarPedido(): void{
-    if(this.nomePedido.trim() !== ''){
+  constructor(private pedidosService: PedidosService) {}
+
+  cadastrar(): void {
+    if (this.nomePedido.trim() !== '') {
       this.pedidosService.adicionar(this.nomePedido.trim());
       this.nomePedido = '';
+      alert('Pedido cadastrado!');
     }
   }
 }
