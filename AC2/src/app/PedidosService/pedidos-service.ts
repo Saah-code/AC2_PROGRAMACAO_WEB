@@ -5,53 +5,56 @@ import { Pedidos} from '../Interface/pedidos';
     providedIn: 'root'
 })
 export class PedidosService{
-    private pedidos: Pedidos[] = [];
-    private proximoId = 1;
+   private pedidos: Pedidos[] = [];
+  private proximoId = 1;
 
-    listar(): Pedidos[]{
-        return this.pedidos;   
-     }
+  listar(): Pedidos[] {
+    return this.pedidos;
+  }
 
-     adicionar(nomePedido: string): void{
-        const novoPedido: Pedidos= {
-            id: this.proximoId++,
-            nomePedido: nomePedido,
-            status:'pendente'
+  adicionar(nomePedido: string): void {
+    const novoPedido: Pedidos = {
+      id: this.proximoId++,
+      nomePedido: nomePedido,
+      status: 'Pendente'
+    };
 
-        };
+    this.pedidos.push(novoPedido);
+  }
 
-        this.pedidos.push(novoPedido);
-     }
+  remover(id: number): void {
+    this.pedidos = this.pedidos.filter(
+      pedido => pedido.id !== id
+    );
+  }
 
-     remover(id:number): void{
-            this.pedidos = this.pedidos.filter(
-                pedido => pedido.id !==id
-            );
-        }
-    
-        pedidoEmPreparo(id: number): void{
-            this.atualizarStatus(id, 'Em preparo');
-        }
+  pedidoAceito(id: number): void {
+    this.atualizarStatus(id, 'Aceito');
+  }
 
-        pedidoPronto(id:number): void{
-            this.atualizarStatus(id, 'Pronto');
-        }
+  pedidoEmPreparo(id: number): void {
+    this.atualizarStatus(id, 'Em preparo');
+  }
 
-        pedidoSaiuParaEntrega(id:number): void{
-            this.atualizarStatus(id, 'Saiu para a entrega');
-        }
+  pedidoPronto(id: number): void {
+    this.atualizarStatus(id, 'Pronto');
+  }
 
-        marcarEntregue(id:number): void{
-            this.atualizarStatus(id, 'Entregue');
-        }
+  pedidoSaiuParaEntrega(id: number): void {
+    this.atualizarStatus(id, 'Saiu para a entrega');
+  }
 
-        private atualizarStatus( id: number, status: string): void{
-            const pedido = this.pedidos.find(
-                pedido => pedido.id ===id
-            );
-            if (pedido) {
-                pedido.status = status;
-            }
-        }
-     }
+  marcarEntregue(id: number): void {
+    this.atualizarStatus(id, 'Entregue');
+  }
 
+  private atualizarStatus(id: number, status: string): void {
+    const pedido = this.pedidos.find(
+      pedido => pedido.id === id
+    );
+
+    if (pedido) {
+      pedido.status = status;
+    }
+  }
+}
