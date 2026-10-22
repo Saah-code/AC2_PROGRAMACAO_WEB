@@ -1,0 +1,73 @@
+
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+}
+
+.contadores {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.pedido {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px 0;
+}
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button {
+  color: white;
+  border: none;
+  padding: 9px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.aceitar {
+  background-color: #fffffe;
+  color:#000000;
+}
+
+.preparo {
+  background-color: #452acd;
+}
+
+
+.rota {
+  background-color: #dfff5d;
+}
+
+.entregue {
+  background-color: #33ea73;
+}
+
+.cancelar {
+  background-color: #df9413;
+}
+
+.entregue-texto {
+  text-decoration: line-through;
+  color: #777;
+}
+
+a {
+  color: #000000;
+}
