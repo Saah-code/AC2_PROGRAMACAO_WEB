@@ -1,32 +1,51 @@
-<h2> Lista de Pedidos</h2>
 
-<a routerLink="/cadastro"> Voltar ao Cadastro de Pedidos</a>
+<h2>Lista de Pedidos</h2>
+
+<a routerLink="/cadastro">Voltar ao Cadastro de Pedidos</a>
 
 <div class="contadores">
-  <p>Total de pedidos: {{totalPedidos}}</p>
-  <p> Pedidos Concluídos: {{pedidosConcluidos}}</p>
-  <p>pedidos Pendentes: {{pedidosPendentes}}</p>
+  <p>Total de pedidos: {{ totalPedidos() }}</p>
+  <p>Pedidos Concluídos: {{ pedidosConcluidos() }}</p>
+  <p>Pedidos Pendentes: {{ pedidosPendentes() }}</p>
 </div>
 
-@if(pedidos.length ===0 ){
-    <p> Nenhum pedido cadastrado</p>
+@if (pedidos.length === 0) {
+  <p>Nenhum pedido cadastrado.</p>
 }
-@for (pedido of pedidos; track pedido.id){
-    <div class = "pedido">
-        <h3 [class.entregue-texto]="pedido.status === 'Entregue'">
-            {{pedido.nomePedido}}
-        </h3>"
 
-        <p> ID: {{pedido.id}}</p>
-        <p> Status: {{pedido.status}}</p>
+@for (pedido of pedidos; track pedido.id) {
+  <div class="pedido">
+    <h3 [class.entregue-texto]="pedido.status === 'Entregue'">
+      {{ pedido.nomePedido }}
+    </h3>
 
-        <div class="botoes">
-            <button class="aceitar" (click)="aceitar(pedido.id)"> Aceitar</button>
-            <button class="preparo" (click)="emPreparo(pedido.id)"> Em Preparo</button>
-            <button class="pronto" (click)="pronto(pedido.id)"> Pronto</button>
-            <button class="rota" (click)="emRota(pedido.id)"> Em Rota</button>
-            <button class="entregue" (click)="entregue(pedido.id)"> Entregue</button>
-            <button class="cancelar" (click)="cancelar(pedido.id)"> Cancelar</button>
-        </div>
+    <p>ID: {{ pedido.id }}</p>
+    <p>Status: {{ pedido.status }}</p>
+
+    <div class="botoes">
+      <button class="aceitar" (click)="aceitar(pedido.id)">
+        Aceitar
+      </button>
+
+      <button class="preparo" (click)="emPreparo(pedido.id)">
+        Em Preparo
+      </button>
+
+
+
+      <button class="rota" (click)="emRota(pedido.id)">
+        Em Rota
+      </button>
+
+      <button class="entregue" (click)="entregue(pedido.id)">
+        Concluir
+      </button>
+
+      <button class="cancelar" (click)="cancelar(pedido.id)">
+        Cancelar
+      </button>
     </div>
+  </div>
 }
+
+
