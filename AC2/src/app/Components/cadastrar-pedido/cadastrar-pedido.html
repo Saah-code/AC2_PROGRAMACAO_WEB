@@ -1,17 +1,19 @@
 <h2> Cadastrar Pedido </h2>
 
-<form (ngSubmit) ="cadastrar()">
+<form (ngSubmit)="cadastrar()">
+  <label for="nomePedido">Nome do pedido:</label>
 
-    <label for="nomePedido"> Nome do Pedido: </label>
-    <input
-      type="text"
-      id= "nomePedido"
-      name= "nomePedido"
-      [(ngModel)]="nomePedido" 
-      placeholder="ex.: McLanche Feliz" required
-      >
-    <button type="submit">Cadastrar</button>
+  <input
+    id="nomePedido"
+    type="text"
+    name="nomePedido"
+    [(ngModel)]="nomePedido"
+    required
+  />
+
+  <button type="submit">Cadastrar pedido</button>
 </form>
+
 
 <a routerLink="/lista">Ver lista de Pedidos</a>
 
